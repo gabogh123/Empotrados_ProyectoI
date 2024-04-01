@@ -1,0 +1,14 @@
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/edit_cache.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/rebuild_cache.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/list_install_components.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/install.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/install/local.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/CMakeFiles/install/strip.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/biblioteca.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/SmartHomeControl.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/edit_cache.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/rebuild_cache.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/list_install_components.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/install.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/install/local.dir
+/home/jsantamaria/CLionProjects/ProjectLib/build/src/CMakeFiles/install/strip.dir

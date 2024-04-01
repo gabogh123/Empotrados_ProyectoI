@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/SmartHomeControl.dir/main.c.o -o SmartHomeControl  libbiblioteca.a -lwiringPi
