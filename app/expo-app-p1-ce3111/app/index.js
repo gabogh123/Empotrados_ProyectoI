@@ -43,7 +43,8 @@ const LogInScreen = () => {
         <SafeAreaView style={styles.containerMain}>
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: COLORS.white}, headerShadowVisible: false,
+                    headerStyle: { backgroundColor: COLORS.white},
+                    headerShadowVisible: false,
                     headerTitle: ""
                 }}
             />

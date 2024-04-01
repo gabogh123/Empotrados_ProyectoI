@@ -14,12 +14,6 @@ const COLORS = {
     fullWhite: "#FFFFFF"
   };
   
-  const FONT = {
-    regular: "DMRegular",
-    medium: "DMMedium",
-    bold: "DMBold",
-  };
-  
   const SIZES = {
     xSmall: 10,
     small: 12,
@@ -52,4 +46,4 @@ const COLORS = {
     },
   };
   
-  export { COLORS, FONT, SIZES, SHADOWS };
+  export { COLORS, SIZES, SHADOWS };
