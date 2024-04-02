@@ -1,19 +1,46 @@
-import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { COLORS, SIZES } from '../../constants';
+import axios from 'axios';
 
-import { COLORS, icons, images, SIZES } from '../../constants';
 
-const LightCard = ( {ubication, state} ) => {
+const LightCard = ( {id, item, ubication, state, url, refetchData} ) => {
+
+    const handleCardPress = () => {
+        console.log('Pressed LightCard for', ubication);
+
+        // Se hace el POST para cambiar el estado de la luz
+        toggle();
+        // Para actualizar los datos
+        refetchData();
+    };
+
+    const toggle = async () => {
+
+        const options = {
+            method: 'POST',
+            url: `${url}/${ubication.toLowerCase()}`
+        };
+
+        try {
+            const response = await axios.request(options);
+            console.log('Toggle for', ubication,  `: (${url}/${ubication.toLowerCase()})`);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+            alert('POST can not be done');
+        }
+    }
+
 	return (
-	
-        <View style={styles.container}>
+        <TouchableOpacity
+            style={styles.container}
+            onPress={() => handleCardPress(item)}
+        >
             <View style={styles.header}>
-                <Text style={styles.headerTitle}>{ubication}</Text>
-                {/* <Text style={styles.headerTitle}>`{state}`</Text> */}
+                <Text style={styles.element}>{`${item.controlElement} ${item.id}`}</Text>
+                <Text style={styles.state}>{item.state}</Text>
             </View>
-        </View>
-    
+        </TouchableOpacity>
     );
 };
 
@@ -23,13 +50,18 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     header: {
-        flexDirection: "row",
+        flexDirection: "collumn",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "flex-start",
+        marginHorizontal: 30
     },
-    headerTitle: {
+    element: {
         fontSize: SIZES.large,
         color: COLORS.primary,
+    },
+    state: {
+        fontSize: SIZES.medium,
+        color: COLORS.secondary,
     },
     cardsContainer: {
         marginTop: SIZES.medium,

@@ -1,18 +1,17 @@
 import React from 'react';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native';
+import { COLORS, SIZES } from '../../constants';
 
-import { COLORS, icons, images, SIZES } from '../../constants';
 
-const DoorCard = ( item, ) => {
+const DoorCard = ( {item, ubication, state} ) => {
+
 	return (
-	
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>One Door</Text>
+            <View style={styles.texts}>
+                <Text style={styles.element}>{`${item.controlElement} ${item.id}`}</Text>
+                <Text style={styles.state}>{item.state}</Text>
             </View>
         </View>
-    
     );
 };
 
@@ -21,14 +20,19 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10
     },
-    header: {
-        flexDirection: "row",
+    texts: {
+        flexDirection: "collumn",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "flex-start",
+        marginHorizontal: 30
     },
-    headerTitle: {
+    element: {
         fontSize: SIZES.large,
         color: COLORS.primary,
+    },
+    state: {
+        fontSize: SIZES.medium,
+        color: COLORS.secondary,
     },
     cardsContainer: {
         marginTop: SIZES.medium,

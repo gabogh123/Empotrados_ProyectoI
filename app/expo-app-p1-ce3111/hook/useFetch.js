@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const rapidApiKey = '4abad60508msh92280165235a973p1cfe85jsna2f230469336';
 
-const useFetch = async (endpoint) => {  // languages
+const useFetch = async (endpoint) => { 
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-
-    //const axios = require('axios');
 
     const options = {
         method: 'GET',
@@ -23,7 +20,6 @@ const useFetch = async (endpoint) => {  // languages
     const fetchData = async () => {
         try {
             const response = await axios.request(options);
-            // console.log(response.data.data.languages[0]);
             console.log(response.data);
             setData(response.data.data);
             setIsLoading(false);

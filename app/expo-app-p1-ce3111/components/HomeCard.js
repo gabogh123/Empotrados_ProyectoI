@@ -1,20 +1,21 @@
 import React from 'react';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
-
-import { COLORS, icons, images, FONT, SIZES } from '../constants';
+import { StyleSheet, View } from 'react-native';
+import { COLORS, SIZES } from '../constants';
 
 import Lights from './Lights';
-import DoorsCard from './Doors';
+import Doors from './Doors';
 import PictureCard from './cards/PictureCard';
 
-const HomeCard = () => {
+
+const HomeCard = ( {url}) => {
+
+
 	return (
 	
         <View style={styles.container}>
-            <Lights style={ [{}] }/>
-            <DoorsCard/>
-            <PictureCard/>
+            <Lights url={url}/>
+            <Doors url={url}/>
+            <PictureCard url={url}/>
         </View>
     
     );

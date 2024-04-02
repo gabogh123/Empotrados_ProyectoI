@@ -1,8 +1,7 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { COLORS, icons, images, FONT, SIZES } from '../../constants';
+import { COLORS, SIZES } from '../../constants';
 
 const HomeHeader = () => {
 	return (
@@ -18,7 +17,7 @@ const HomeHeader = () => {
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		backgroundColor: COLORS.white,
+		    backgroundColor: COLORS.white,
         paddingLeft: 20,
         paddingVertical: 20
 	},
@@ -29,6 +28,7 @@ const styles = StyleSheet.create({
     textTitle: {
         fontSize: SIZES.xLarge,
         color: COLORS.primary,
+        fontWeight: 'bold',
         marginTop: 2,
       },
 });

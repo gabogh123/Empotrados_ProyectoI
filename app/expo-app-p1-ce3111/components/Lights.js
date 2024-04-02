@@ -1,39 +1,58 @@
-import { 
-    ActivityIndicator, StyleSheet, Text, TouchableOpacity, View 
-} from 'react-native';
-import { useRouter } from 'expo-router';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { COLORS, SIZES } from '../constants';
 
-import { COLORS } from '../constants';
 import LightCard from './cards/LightCard';
 
-import useGet from '../hook/useGet';
-import useFetch from '../hook/useFetch';
+import useFetch2 from '../hook/useFetch2';
 
-const Lights = () => {
-    const router = useRouter();
 
-    const { data, isLoading, error } = useGet(
-		// 'http://192.168.50.180:8888', 'encenderluz4'
-		'http://172.20.10.2:8888', 'encenderluz4'
-	);
-
+const Lights = ( {url} ) => {
+    //const router = useRouter();
     
-
+    const { data, isLoading, error, refetch } = useFetch2('')
 
 	return (
 	
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>Lights</Text>
-                <Text style={styles.headerInfo}>Press each to change state.</Text>
-            </View>
 
+            <View style={styles.header}>
+                {/* Titulo */}
+                <Text style={styles.headerTitle}>Lights</Text>
+                {/* Boton de Sync */}
+                <TouchableOpacity
+                    onPress={() => refetch()}
+                >
+                   <Text>Sync</Text>
+                </TouchableOpacity>
+            </View>
+            {/* Instrucciones */}
+            <Text style={styles.headerInfo}>Press each to change state.</Text>
+            {/* Contenedor de las cards */}
             <View style={styles.containerCards}>
-                <LightCard ubication='Cuarto 1'/>
-                <LightCard ubication='Cuarto 2'/>
-                <LightCard ubication='Sala'/>
-                <LightCard ubication='Comedor'/>
-                <LightCard ubication='Cocina'/>
+                {isLoading ? ( /* Mientras carga */
+                    <ActivityIndicator size='large' colors={COLORS.primary} />
+                    ) : error ? ( /* Si hay un error */
+                        <Text>Something went wrong</Text>
+                    ) : ( /* Si hay datos */
+                        <View>
+                            {data.map((item, index) => (
+                                <View key={index}>
+                                    {item.controlElement === 'Luz' ? (
+                                    <LightCard key={index}
+                                        item={item}
+                                        ubication={`Luz${index+1}`}
+                                        refetchData={refetch}
+                                        url={url}
+                                    />
+                                    ) : (
+                                    null
+                                    )
+                                    }
+                                </View>
+                                ))}
+                        </View> 
+                    )
+                }       
             </View>
         </View>
     
@@ -42,25 +61,29 @@ const Lights = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: SIZES.xLarge,
     },
     containerCards: {
-
+        marginTop: SIZES.small,
     },
     header: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    header2: {
         width: "100%",
 		backgroundColor: COLORS.white,
-        // paddingLeft: 20,
         paddingVertical: 20
     },
     headerTitle: {
-
+        fontSize: SIZES.xLarge,
+        fontWeight: 'bold',
         color: COLORS.primary,
         marginBottom: 5,
       },
     headerInfo: {
-
+        fontSize: SIZES.medium,
         color: COLORS.secondary,
       },
 });

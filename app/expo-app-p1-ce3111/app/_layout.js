@@ -1,7 +1,5 @@
 import React from 'react';
-import { Stack, Screen } from 'expo-router';
-import LoginScreen from '.';
-import HomeScreen from './[id]';
+import { Stack } from 'expo-router';
 
 const Layout = () => {
   return (

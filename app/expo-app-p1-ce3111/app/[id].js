@@ -1,28 +1,19 @@
 import React from 'react';
-import { Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-
-import { COLORS, icons, images } from '../constants';
+import { COLORS } from '../constants';
 
 import HomeHeader from '../components/headers/HomeHeader';
 import HomeCard from '../components/HomeCard';
 
 import homeLayoutImage from '../assets/images/home_layout.png';
 
-import useGet from '../hook/useGet';
-import usePost from '../hook/usePost';
-import useFetch from '../hook/useFetch';
+
+const url = 'http://192.168.50.226:8888';
 
 const HomeScreen = () => {
 	const router = useRouter();
 
-	// const { data, isLoading, error } = useFetch(
-	// 	'languages'
-	// );
-
-	// const { _data, _isLoading, _error } = useGet(
-	// 	'http://192.168.50.180:8888', 'encenderluz4'
-	// );
 	
 	return (
 		<SafeAreaView style={styles.containerMain}>
@@ -40,7 +31,7 @@ const HomeScreen = () => {
 					<Image source={homeLayoutImage} style={styles.image} resizeMode="cover"/>
 				</View>
 				<Text style={styles.textInstructions}>Scroll down to control your home.</Text>
-				<HomeCard/>
+				<HomeCard url={url}/>
 			</ScrollView>
 		</SafeAreaView>
 	);

@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Parser } from 'htmlparser2';
 
-const testHtml = '<html><body><h1>Luz 1</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz1"><input type="submit" value="Encender Luz 1"></form><form method="post" action="/apagarluz1"><input type="submit" value="Apagar Luz 1"></form><h1>Luz 2</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz2"><input type="submit" value="Encender Luz 2"></form><form method="post" action="/apagarluz2"><input type="submit" value="Apagar Luz 2"></form><h1>Luz 3</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz3"><input type="submit" value="Encender Luz 3"></form><form method="post" action="/apagarluz3"><input type="submit" value="Apagar Luz 3"></form><h1>Luz 4</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz4"><input type="submit" value="Encender Luz 4"></form><form method="post" action="/apagarluz4"><input type="submit" value="Apagar Luz 4"></form><h1>Luz 5</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz5"><input type="submit" value="Encender Luz 5"></form><form method="post" action="/apagarluz5"><input type="submit" value="Apagar Luz 5"></form><h1>Capturar Imagen</h1><form method="post" action="/capturarimagen"><input type="submit" value="Capturar"></form></body></html>';
+const testHtml2 = '<html><body><h1>Luz 1</h1><p>Estado: EncendidaT</p><form method="post" action="/encenderluz1"><input type="submit" value="Encender Luz 1"></form><form method="post" action="/apagarluz1"><input type="submit" value="Apagar Luz 1"></form><h1>Luz 2</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz2"><input type="submit" value="Encender Luz 2"></form><form method="post" action="/apagarluz2"><input type="submit" value="Apagar Luz 2"></form><h1>Luz 3</h1><p>Estado: EncendidaT</p><form method="post" action="/encenderluz3"><input type="submit" value="Encender Luz 3"></form><form method="post" action="/apagarluz3"><input type="submit" value="Apagar Luz 3"></form><h1>Luz 4</h1><p>Estado: EncendidaT</p><form method="post" action="/encenderluz4"><input type="submit" value="Encender Luz 4"></form><form method="post" action="/apagarluz4"><input type="submit" value="Apagar Luz 4"></form><h1>Luz 5</h1><p>Estado: EncendidaT</p><form method="post" action="/encenderluz5"><input type="submit" value="Encender Luz 5"></form><form method="post" action="/apagarluz5"><input type="submit" value="Apagar Luz 5"></form><h1>Capturar Imagen</h1><form method="post" action="/capturarimagen"><input type="submit" value="Capturar"></form></body></html>';
+const testHtml1 = '<html><body><h1>Luz 1</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz1"><input type="submit" value="Encender Luz 1"></form><form method="post" action="/apagarluz1"><input type="submit" value="Apagar Luz 1"></form><h1>Luz 2</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz2"><input type="submit" value="Encender Luz 2"></form><form method="post" action="/apagarluz2"><input type="submit" value="Apagar Luz 2"></form><h1>Luz 3</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz3"><input type="submit" value="Encender Luz 3"></form><form method="post" action="/apagarluz3"><input type="submit" value="Apagar Luz 3"></form><h1>Luz 4</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz4"><input type="submit" value="Encender Luz 4"></form><form method="post" action="/apagarluz4"><input type="submit" value="Apagar Luz 4"></form><h1>Luz 5</h1><p>Estado: Apagada</p><form method="post" action="/encenderluz5"><input type="submit" value="Encender Luz 5"></form><form method="post" action="/apagarluz5"><input type="submit" value="Apagar Luz 5"></form><h1>Capturar Imagen</h1><form method="post" action="/capturarimagen"><input type="submit" value="Capturar"></form></body></html>';
 
 // Hook para realizar solicitudes GET
 const useGet = (url, dynamicPath) => {
     const [data, setData] = useState(null);
-    const [loading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    const [controlElements, setH1ContentList] = useState([]);
 
     const options = {
         method: 'GET',
@@ -22,14 +20,13 @@ const useGet = (url, dynamicPath) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.request(options);
-            console.log(response.data);
-            console.log(typeof response.data);
-            setData(response.data.data);
-            setIsLoading(false);
+            // const response = await axios.request(options);
+            // console.log(response.data);
+            // console.log(typeof response.data);
+            setIsLoading(true);
             
-            const htmlData = response.data;
-            // const htmlData = testHtml;
+            // const htmlData = response.data;
+            const htmlData = testHtml2;
             
             // Regular expression to match <h1> and <p> tags
             const regex = /<h1>(.*?) (.*?)<\/h1><p>Estado: (.*?)<\/p>/gs;
@@ -46,6 +43,8 @@ const useGet = (url, dynamicPath) => {
             }
 
             console.log(resultList);
+
+            setData(resultList);
 
         } catch (error) {
             console.error(error);
@@ -65,7 +64,7 @@ const useGet = (url, dynamicPath) => {
         fetchData();
     }
 
-    return { data, loading, error, refetch };
+    return { data, isLoading, error, refetch };
 };
 
 export default useGet;
