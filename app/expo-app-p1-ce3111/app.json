@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "expo-app-p1-ce3111",
+    "slug": "expo-app-p1-ce3111"
+  }
+}
