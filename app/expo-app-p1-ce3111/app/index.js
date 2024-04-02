@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Alert, View, Image, SafeAreaView, StyleSheet, Text, TextInput } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
-import { COLORS, icons, images, SIZES } from '../constants';
+import { COLORS, icons, images } from '../constants';
 
 import meet from '../assets/images/meet_gabo_ruben.png';
 

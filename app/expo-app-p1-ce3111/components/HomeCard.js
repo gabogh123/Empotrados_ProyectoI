@@ -4,15 +4,15 @@ import { Stack, useRouter } from 'expo-router';
 
 import { COLORS, icons, images, FONT, SIZES } from '../constants';
 
-import LightsCard from './cards/LightsCard';
-import DoorsCard from './cards/DoorsCard';
+import Lights from './Lights';
+import DoorsCard from './Doors';
 import PictureCard from './cards/PictureCard';
 
 const HomeCard = () => {
 	return (
 	
         <View style={styles.container}>
-            <LightsCard style={ [{}] }/>
+            <Lights style={ [{}] }/>
             <DoorsCard/>
             <PictureCard/>
         </View>

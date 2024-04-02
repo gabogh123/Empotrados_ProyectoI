@@ -1,11 +1,25 @@
-import React from 'react';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { 
+    ActivityIndicator, StyleSheet, Text, TouchableOpacity, View 
+} from 'react-native';
+import { useRouter } from 'expo-router';
 
-import { COLORS, icons, images, SIZES } from '../../constants';
-import LightCard from './LightCard';
+import { COLORS } from '../constants';
+import LightCard from './cards/LightCard';
 
-const LightsCard = () => {
+import useGet from '../hook/useGet';
+import useFetch from '../hook/useFetch';
+
+const Lights = () => {
+    const router = useRouter();
+
+    const { data, isLoading, error } = useGet(
+		// 'http://192.168.50.180:8888', 'encenderluz4'
+		'http://172.20.10.2:8888', 'encenderluz4'
+	);
+
+    
+
+
 	return (
 	
         <View style={styles.container}>
@@ -15,11 +29,11 @@ const LightsCard = () => {
             </View>
 
             <View style={styles.containerCards}>
-                <LightCard/>
-                <LightCard/>
-                <LightCard/>
-                <LightCard/>
-                <LightCard/>
+                <LightCard ubication='Cuarto 1'/>
+                <LightCard ubication='Cuarto 2'/>
+                <LightCard ubication='Sala'/>
+                <LightCard ubication='Comedor'/>
+                <LightCard ubication='Cocina'/>
             </View>
         </View>
     
@@ -32,7 +46,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     containerCards: {
-        marginTop: SIZES.xSmall,
+
     },
     header: {
         width: "100%",
@@ -41,14 +55,14 @@ const styles = StyleSheet.create({
         paddingVertical: 20
     },
     headerTitle: {
-        fontSize: SIZES.xLarge,
+
         color: COLORS.primary,
         marginBottom: 5,
       },
     headerInfo: {
-        fontSize: SIZES.medium,
+
         color: COLORS.secondary,
       },
 });
 
-export default LightsCard;
+export default Lights;

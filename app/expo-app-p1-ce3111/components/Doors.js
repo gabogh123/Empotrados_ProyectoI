@@ -2,9 +2,9 @@ import React from 'react';
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
-import { COLORS, icons, images, SIZES } from '../../constants';
+import { COLORS, icons, images, SIZES } from '../constants';
 
-import DoorCard from './DoorCard';
+import Doors from './cards/DoorCard';
 
 const DoorsCard = () => {
 	return (
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default DoorsCard;
+export default Doors;

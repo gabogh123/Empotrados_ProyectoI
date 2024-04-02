@@ -1,15 +1,16 @@
 import React from 'react';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
 import { COLORS, icons, images, SIZES } from '../../constants';
 
-const LightCard = ( item, ) => {
+const LightCard = ( {ubication, state} ) => {
 	return (
 	
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headerTitle}>One light</Text>
+                <Text style={styles.headerTitle}>{ubication}</Text>
+                {/* <Text style={styles.headerTitle}>`{state}`</Text> */}
             </View>
         </View>
     
